@@ -143,32 +143,32 @@ else
     PATH=/app/otp/bin:$PATH
     export PATH
 
-    cd $build
+    # cd $build
 
     TOOL="none"
 
-    if [ ! -e "rebar" ]; then
-        if [ ! -e "rebar3" -a ! -e "rebar.lock" ]; then
-	        if [ -e "erlang.mk" ]; then
-	            TOOL="erlang.mk"
-	        else
-                ## can't find any of the others, fall back to rebar
-                echo "-----> Installing Rebar from buildpack"
-                cp ${bpdir}/opt/rebar ./
-                TOOL="rebar"
-            fi
-        else
-            # if lockfile but no binary
-            if [ ! -e "rebar3" ]; then
-                echo "-----> Installing Rebar3 from rebar3.org nightly"
-                curl -o rebar3 https://s3.amazonaws.com/rebar3/rebar3
-                chmod +x rebar3
-            fi
-            TOOL="rebar3"
-        fi
-    else
-        TOOL="rebar"
-    fi
+    # if [ ! -e "rebar" ]; then
+    #     if [ ! -e "rebar3" -a ! -e "rebar.lock" ]; then
+	   #      if [ -e "erlang.mk" ]; then
+	   #          TOOL="erlang.mk"
+	   #      else
+    #             ## can't find any of the others, fall back to rebar
+    #             echo "-----> Installing Rebar from buildpack"
+    #             cp ${bpdir}/opt/rebar ./
+    #             TOOL="rebar"
+    #         fi
+    #     else
+    #         # if lockfile but no binary
+    #         if [ ! -e "rebar3" ]; then
+    #             echo "-----> Installing Rebar3 from rebar3.org nightly"
+    #             curl -o rebar3 https://s3.amazonaws.com/rebar3/rebar3
+    #             chmod +x rebar3
+    #         fi
+    #         TOOL="rebar3"
+    #     fi
+    # else
+    #     TOOL="rebar"
+    # fi
 
     unset GIT_DIR
 
